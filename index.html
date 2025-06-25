@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hariprasath S - Cloud/DevOps Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .skill-badge {
+            display: inline-block;
+            background-color: #E0E7FF;
+            color: #3730A3;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        /* Simple spinner */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4f46e5;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-slate-900">
+                <a href="#">Hariprasath S</a>
+            </div>
+            <div class="hidden md:flex items-center space-x-6 text-lg">
+                <a href="#about" class="hover:text-indigo-600 transition-colors">About</a>
+                <a href="#skills" class="hover:text-indigo-600 transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-indigo-600 transition-colors">Projects</a>
+                <a href="#advisor" class="hover:text-indigo-600 transition-colors">Advisor</a>
+                <a href="#contact" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-slate-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-6 text-lg hover:bg-slate-100">About</a>
+            <a href="#skills" class="block py-2 px-6 text-lg hover:bg-slate-100">Skills</a>
+            <a href="#projects" class="block py-2 px-6 text-lg hover:bg-slate-100">Projects</a>
+            <a href="#advisor" class="block py-2 px-6 text-lg hover:bg-slate-100">Advisor</a>
+            <a href="#contact" class="block py-2 px-6 text-lg hover:bg-slate-100">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Hero Section -->
+        <section id="about" class="text-center py-16 md:py-24">
+            <h1 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight">Hariprasath S</h1>
+            <p class="text-2xl md:text-3xl text-indigo-600 font-medium mt-3">Cloud & DevOps Engineer</p>
+            <p class="max-w-3xl mx-auto mt-6 text-lg text-slate-600">
+                Results-driven engineer with 2 years of experience designing and managing cloud infrastructure, automating deployments, and building secure, scalable systems in AWS and Azure.
+            </p>
+            <div class="mt-8 flex justify-center space-x-4">
+                <a href="mailto:prasathshanmugaraj@gmail.com" class="bg-indigo-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition-transform hover:scale-105">
+                    Get In Touch
+                </a>
+                <a href="https://www.linkedin.com/in/hariprasath-s-288b241b" target="_blank" class="bg-white border border-slate-300 text-slate-700 px-6 py-3 rounded-lg text-lg font-semibold hover:bg-slate-100 hover:border-slate-400 transition-transform hover:scale-105">
+                    LinkedIn
+                </a>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-16 md:py-24 bg-white rounded-2xl shadow-sm">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Core Technical Skills</h2>
+                <p class="max-w-2xl mx-auto mt-4 text-slate-600">A snapshot of the primary tools and technologies I work with daily.</p>
+            </div>
+            <div class="max-w-4xl mx-auto mt-12 text-center">
+                <!-- Skills content remains the same -->
+                 <div>
+                    <h3 class="text-xl font-semibold text-slate-700 mb-4">Cloud Platforms</h3>
+                    <span class="skill-badge">AWS</span><span class="skill-badge">Azure</span><span class="skill-badge">EC2</span><span class="skill-badge">S3</span><span class="skill-badge">RDS</span><span class="skill-badge">IAM</span><span class="skill-badge">VPC</span><span class="skill-badge">EKS</span>
+                </div>
+                <div class="mt-8">
+                    <h3 class="text-xl font-semibold text-slate-700 mb-4">Automation & CI/CD</h3>
+                    <span class="skill-badge">Terraform</span><span class="skill-badge">Jenkins</span><span class="skill-badge">Git</span><span class="skill-badge">Maven</span>
+                </div>
+                <div class="mt-8">
+                    <h3 class="text-xl font-semibold text-slate-700 mb-4">Containers & Orchestration</h3>
+                     <span class="skill-badge">Docker</span><span class="skill-badge">Kubernetes</span>
+                </div>
+                 <div class="mt-8">
+                    <h3 class="text-xl font-semibold text-slate-700 mb-4">Familiar With</h3>
+                     <span class="skill-badge">Ansible</span><span class="skill-badge">SonarQube</span><span class="skill-badge">Nexus Repository</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 md:py-24">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">My Projects</h2>
+                <p class="max-w-2xl mx-auto mt-4 text-slate-600">Here are some of the key projects that showcase my hands-on experience.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-900">CI/CD Pipeline for Microservices</h3>
+                    <p class="mt-3 text-slate-600 flex-grow">Designed a fully automated deployment workflow using Jenkins to streamline integration and delivery for a microservices application.</p>
+                    <div class="mt-6">
+                        <span class="skill-badge">AWS</span><span class="skill-badge">Jenkins</span><span class="skill-badge">Terraform</span><span class="skill-badge">Docker</span><span class="skill-badge">Kubernetes</span>
+                    </div>
+                    <button onclick="explainProject('CI/CD Pipeline for Microservices', 'Designed a fully automated deployment workflow using Jenkins, Terraform, Docker, and Kubernetes on AWS to streamline integration and delivery.')" class="mt-6 w-full bg-indigo-100 text-indigo-700 font-semibold py-2 rounded-lg hover:bg-indigo-200 transition-colors">✨ Explain Project</button>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-900">High-Availability Architecture</h3>
+                    <p class="mt-3 text-slate-600 flex-grow">Engineered a fault-tolerant AWS environment using Auto Scaling and Multi-AZ RDS, reducing infrastructure costs by ~15%.</p>
+                    <div class="mt-6">
+                        <span class="skill-badge">AWS</span><span class="skill-badge">Auto Scaling</span><span class="skill-badge">RDS</span><span class="skill-badge">ELB</span><span class="skill-badge">Terraform</span>
+                    </div>
+                    <button onclick="explainProject('High-Availability Architecture', 'Engineered a fault-tolerant AWS environment using Auto Scaling, Multi-AZ RDS, and an Elastic Load Balancer with Terraform. This project reduced infrastructure costs by approximately 15% while ensuring high uptime.')" class="mt-6 w-full bg-indigo-100 text-indigo-700 font-semibold py-2 rounded-lg hover:bg-indigo-200 transition-colors">✨ Explain Project</button>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-900">Monolithic to Cloud Migration</h3>
+                    <p class="mt-3 text-slate-600 flex-grow">Led the migration of a monolithic application to AWS with over 99.9% uptime, ensuring business continuity and enhancing performance.</p>
+                    <div class="mt-6">
+                        <span class="skill-badge">AWS</span><span class="skill-badge">EC2</span><span class="skill-badge">Terraform</span><span class="skill-badge">ELB</span><span class="skill-badge">RDS</span>
+                    </div>
+                    <button onclick="explainProject('Monolithic to Cloud Migration', 'Led the migration of a monolithic application to AWS with over 99.9% uptime. This involved provisioning infrastructure with Terraform and ensuring business continuity and enhanced performance.')" class="mt-6 w-full bg-indigo-100 text-indigo-700 font-semibold py-2 rounded-lg hover:bg-indigo-200 transition-colors">✨ Explain Project</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Advisor Section -->
+        <section id="advisor" class="py-16 md:py-24 bg-white rounded-2xl shadow-sm">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">✨ Career Path Advisor</h2>
+                <p class="max-w-2xl mx-auto mt-4 text-slate-600">Enter a job title you aspire to, and get an AI-generated learning path based on my skills.</p>
+            </div>
+            <div class="max-w-xl mx-auto mt-12">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input id="career-goal" type="text" placeholder="e.g., Senior DevOps Architect" class="flex-grow w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+                    <button id="get-advice-btn" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-transform hover:scale-105">Get Advice</button>
+                </div>
+                <div id="advice-output" class="mt-8 p-6 bg-slate-100 rounded-lg min-h-[100px]">
+                    <p class="text-slate-500">Your personalized career advice will appear here...</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 md:py-24 bg-indigo-700 text-white rounded-2xl mt-16">
+            <div class="text-center">
+                 <h2 class="text-3xl md:text-4xl font-bold">Let's Connect</h2>
+                <p class="max-w-2xl mx-auto mt-4 text-indigo-200">I'm currently seeking new opportunities and would love to hear from you. Feel free to reach out for any inquiries or collaborations.</p>
+                <div class="mt-8">
+                     <a href="mailto:prasathshanmugaraj@gmail.com" class="bg-white text-indigo-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-indigo-50 transition-colors">
+                        prasathshanmugaraj@gmail.com
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-100 border-t border-slate-200 mt-16">
+        <div class="container mx-auto px-6 py-6 text-center text-slate-500">
+            <p>&copy; 2024 Hariprasath S. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Project Explainer -->
+    <div id="project-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3 id="modal-title" class="text-2xl font-bold mb-4"></h3>
+            <div id="modal-body" class="text-slate-700 space-y-4"></div>
+            <button onclick="closeModal()" class="mt-6 w-full bg-slate-200 text-slate-800 font-semibold py-2 rounded-lg hover:bg-slate-300 transition-colors">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // --- Gemini API Call ---
+        async function callGemini(prompt) {
+            const apiKey = ""; // Leave this as-is
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+            
+            let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+            const payload = { contents: chatHistory };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API call failed with status: ${response.status}`);
+                }
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    return result.candidates[0].content.parts[0].text;
+                } else {
+                    return "Sorry, I couldn't generate a response. The API returned an unexpected result.";
+                }
+            } catch (error) {
+                console.error("Gemini API call error:", error);
+                return "An error occurred while contacting the AI. Please check the console for details.";
+            }
+        }
+
+
+        // --- Project Explainer Logic ---
+        const modal = document.getElementById('project-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+
+        async function explainProject(title, description) {
+            modalTitle.textContent = title;
+            modalBody.innerHTML = '<div class="flex justify-center"><div class="loader"></div></div>';
+            modal.classList.remove('hidden');
+
+            const prompt = `As an expert tech recruiter, explain the following project to a non-technical hiring manager. Focus on the business value and the skills demonstrated. Keep it concise, professional, and easy to understand. Project Title: "${title}". Project Description: "${description}".`;
+            
+            const explanation = await callGemini(prompt);
+            modalBody.innerHTML = explanation.replace(/\n/g, '<br>'); // Simple formatting
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        // --- Career Advisor Logic ---
+        const getAdviceBtn = document.getElementById('get-advice-btn');
+        const careerGoalInput = document.getElementById('career-goal');
+        const adviceOutput = document.getElementById('advice-output');
+        const mySkills = "AWS, Azure, Terraform, Jenkins, Git, Maven, Docker, Kubernetes, Python, Jira";
+
+        getAdviceBtn.addEventListener('click', async () => {
+            const careerGoal = careerGoalInput.value;
+            if (!careerGoal) {
+                adviceOutput.innerHTML = '<p class="text-red-500">Please enter a career goal.</p>';
+                return;
+            }
+
+            adviceOutput.innerHTML = '<div class="flex justify-center"><div class="loader"></div></div>';
+
+            const prompt = `I am a Cloud/DevOps engineer with the following skills: ${mySkills}. My career goal is to become a "${careerGoal}". Based on my current skills, please provide a clear, actionable learning path. Suggest 3-4 key technical skills to learn next, 1-2 relevant certifications to pursue, and a simple project idea to gain hands-on experience. Structure your response with clear headings.`;
+            
+            const advice = await callGemini(prompt);
+            adviceOutput.innerHTML = advice.replace(/\n/g, '<br>');
+        });
+
+        // --- Mobile Menu Logic ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        for(let link of mobileMenuLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+    </script>
+</body>
+</html>
