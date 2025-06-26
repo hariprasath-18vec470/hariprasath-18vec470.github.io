@@ -57,6 +57,13 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        .error-message {
+            background-color: #FEE2E2;
+            color: #B91C1C;
+            border: 1px solid #FCA5A5;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -116,7 +123,6 @@
                 <p class="max-w-2xl mx-auto mt-4 text-slate-600">A snapshot of the primary tools and technologies I work with daily.</p>
             </div>
             <div class="max-w-4xl mx-auto mt-12 text-center">
-                <!-- Skills content remains the same -->
                  <div>
                     <h3 class="text-xl font-semibold text-slate-700 mb-4">Cloud Platforms</h3>
                     <span class="skill-badge">AWS</span><span class="skill-badge">Azure</span><span class="skill-badge">EC2</span><span class="skill-badge">S3</span><span class="skill-badge">RDS</span><span class="skill-badge">IAM</span><span class="skill-badge">VPC</span><span class="skill-badge">EKS</span>
@@ -225,7 +231,13 @@
     <script>
         // --- Gemini API Call ---
         async function callGemini(prompt) {
-            const apiKey = ""; // Leave this as-is
+            // IMPORTANT: Replace with your own API key from Google AI Studio
+            const apiKey = "YOUR_GEMINI_API_KEY_HERE"; 
+            
+            if (apiKey === "YOUR_GEMINI_API_KEY_HERE") {
+                return "<strong>Error:</strong> API Key is missing. Please add your Gemini API key to the script in the HTML file.";
+            }
+
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
             
             let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
@@ -239,24 +251,33 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error(`API call failed with status: ${response.status}`);
+                    const errorData = await response.json();
+                    console.error("API Error Response:", errorData);
+                    throw new Error(`API call failed: ${errorData.error.message}`);
                 }
 
                 const result = await response.json();
 
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
+                if (result.candidates && result.candidates.length > 0) {
                     return result.candidates[0].content.parts[0].text;
                 } else {
-                    return "Sorry, I couldn't generate a response. The API returned an unexpected result.";
+                    console.error("Unexpected API response:", result);
+                    return "Sorry, the AI returned an unexpected response.";
                 }
             } catch (error) {
                 console.error("Gemini API call error:", error);
-                return "An error occurred while contacting the AI. Please check the console for details.";
+                return `<strong>An error occurred:</strong><br>${error.message}. <br><br>Please check the browser console for more details.`;
             }
         }
 
+        // --- Helper function to format response ---
+        function formatResponse(text) {
+             // Replace newlines with <br> for HTML display
+            let formattedText = text.replace(/\n/g, '<br>');
+            // Basic markdown for bolding **text** -> <strong>text</strong>
+            formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            return formattedText;
+        }
 
         // --- Project Explainer Logic ---
         const modal = document.getElementById('project-modal');
@@ -271,7 +292,7 @@
             const prompt = `As an expert tech recruiter, explain the following project to a non-technical hiring manager. Focus on the business value and the skills demonstrated. Keep it concise, professional, and easy to understand. Project Title: "${title}". Project Description: "${description}".`;
             
             const explanation = await callGemini(prompt);
-            modalBody.innerHTML = explanation.replace(/\n/g, '<br>'); // Simple formatting
+            modalBody.innerHTML = formatResponse(explanation);
         }
 
         function closeModal() {
@@ -287,16 +308,16 @@
         getAdviceBtn.addEventListener('click', async () => {
             const careerGoal = careerGoalInput.value;
             if (!careerGoal) {
-                adviceOutput.innerHTML = '<p class="text-red-500">Please enter a career goal.</p>';
+                adviceOutput.innerHTML = '<p class="text-red-500 font-medium">Please enter a career goal.</p>';
                 return;
             }
 
             adviceOutput.innerHTML = '<div class="flex justify-center"><div class="loader"></div></div>';
 
-            const prompt = `I am a Cloud/DevOps engineer with the following skills: ${mySkills}. My career goal is to become a "${careerGoal}". Based on my current skills, please provide a clear, actionable learning path. Suggest 3-4 key technical skills to learn next, 1-2 relevant certifications to pursue, and a simple project idea to gain hands-on experience. Structure your response with clear headings.`;
+            const prompt = `I am a Cloud/DevOps engineer with the following skills: ${mySkills}. My career goal is to become a "${careerGoal}". Based on my current skills, please provide a clear, actionable learning path. Suggest 3-4 key technical skills to learn next, 1-2 relevant certifications to pursue, and a simple project idea to gain hands-on experience. Structure your response with clear headings and use markdown for bolding.`;
             
             const advice = await callGemini(prompt);
-            adviceOutput.innerHTML = advice.replace(/\n/g, '<br>');
+            adviceOutput.innerHTML = formatResponse(advice);
         });
 
         // --- Mobile Menu Logic ---
